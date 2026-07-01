@@ -1,26 +1,94 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Two fonts only */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-cormorant);
+
+  /* Palette — exact from snapshot */
+  --color-teal-deep: #2f3e3c;
+  --color-sage-mint: #bddbd1;
+  --color-grey-green: #e7e9e3;
+  --color-warm-white: #fbf9f1;
+  --color-ice-blue: #e8f0f1;
+  --color-sky-light: #c7e7ec;
+
+  --background: #fbf9f1;
+  --foreground: #2f3e3c;
+  --card: #e8f0f1;
+  --card-foreground: #2f3e3c;
+  --primary: #2f3e3c;
+  --primary-foreground: #fbf9f1;
+  --secondary: #bddbd1;
+  --secondary-foreground: #2f3e3c;
+  --muted: #e7e9e3;
+  --muted-foreground: #4a5e5b;
+  --accent: #bddbd1;
+  --accent-foreground: #2f3e3c;
+  --border: #bddbd1;
+  --input: #e7e9e3;
+  --ring: #2f3e3c;
+  --radius: 0.5rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Display font — Cormorant Garamond for all headings and the doctor's name */
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+/* Accent underline — the signature sage-mint stroke */
+.accent-underline {
+  position: relative;
+  display: inline-block;
+}
+.accent-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #bddbd1;
+  border-radius: 2px;
+}
+
+/* Section eyebrow label */
+.eyebrow {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4a5e5b;
+}
+
+/* Thin gradient divider between sections */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #bddbd1, transparent);
 }
