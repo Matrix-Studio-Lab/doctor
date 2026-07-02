@@ -21,37 +21,62 @@ export default function Hero() {
       {/*
         Diagonal band: a full-page parallelogram in #e8f0f1 (ice blue),
         drawn with a skewed pseudo-element approach via a positioned div.
-        Covers the right side on desktop and bleeds to full-width on mobile.
+        Desktop-only — the mobile layout drops the band entirely in favour
+        of a low-opacity photo watermark behind the text (see below).
       */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden"
+        className="pointer-events-none absolute inset-0 overflow-hidden hidden lg:block"
       >
-        {/* The diagonal ice-blue slab — skewed from top-right to bottom-left */}
+        {/*
+          The diagonal ice-blue slab covers the right ~55% of the viewport
+          with only a gentle taper, so the doctor photo (centered in the
+          right column) sits fully inside it with margin to spare, while
+          the left edge still stays clear of the text column's content.
+        */}
         <div
-          className="absolute top-0 right-0 h-full w-[65%] bg-[#e8f0f1] origin-top-right"
-          style={{ clipPath: "polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
+          className="absolute top-0 right-0 h-full w-[55%] bg-[#e8f0f1] origin-top-right"
+          style={{ clipPath: "polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 lg:px-12 pt-24 pb-16 grid lg:grid-cols-2 gap-12 lg:gap-0 items-center min-h-screen">
+      {/*
+        Mobile-only: the doctor photo (transparent cutout) as a faint,
+        right-shifted watermark filling the viewport behind the text,
+        instead of the desktop's ice-blue diagonal + boxed photo.
+      */}
+      <div
+        aria-hidden
+        className="absolute -right-[15%] bottom-0 w-[130%] aspect-square opacity-25 lg:hidden"
+      >
+        <Image
+          src="/doc-hero-mobile.png"
+          alt=""
+          fill
+          className="object-contain object-bottom"
+          priority
+          sizes="130vw"
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl w-full px-6 lg:px-12 pt-28 pb-14 lg:pt-24 lg:pb-16 grid lg:grid-cols-2 gap-12 lg:gap-0 items-center min-h-screen">
         {/* ── Left: text ── */}
-        <div className="flex flex-col gap-7 lg:pr-12">
+        <div className="flex flex-col gap-5 lg:gap-7 lg:pr-12">
           <motion.div
             custom={0} initial="hidden" animate="show" variants={fadeUp}
-            className="flex items-center gap-3"
+            className="hidden lg:flex items-center gap-3"
           >
             <span className="block h-px w-8 bg-[#bddbd1]" />
             <span className="eyebrow">Consultant Orthopaedic Surgeon</span>
           </motion.div>
 
           <motion.div custom={1} initial="hidden" animate="show" variants={fadeUp}>
-            <h1 className="font-display text-[clamp(3.2rem,7vw,5.8rem)] leading-[1.0] tracking-tight text-[#2f3e3c]">
+            <h1 className="font-display text-[clamp(2.6rem,11vw,5.8rem)] leading-[1.0] tracking-tight text-[#2f3e3c]">
               Dr. Deepak
               <br />
               <span className="font-light italic">Verma</span>
             </h1>
-            <div className="mt-3 h-0.5 w-20 rounded-full bg-[#bddbd1]" />
+            <div className="mt-2 lg:mt-3 h-0.5 w-20 rounded-full bg-[#bddbd1]" />
           </motion.div>
 
           <motion.div
@@ -84,7 +109,7 @@ export default function Hero() {
 
           <motion.p
             custom={4} initial="hidden" animate="show" variants={fadeUp}
-            className="max-w-md text-base leading-[1.75] text-[#4a5e5b]"
+            className="max-w-md text-base leading-[1.5] lg:leading-[1.75] text-[#4a5e5b]"
           >
             Over two decades of specialised orthopaedic care in Kolkata —
             from complex joint replacements to precision sports injury management.
@@ -110,7 +135,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* ── Right: Doctor photo — clean, just the image ── */}
+        {/* ── Right: Doctor photo — clean, just the image (desktop only) ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -130,12 +155,12 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll cue */}
+      {/* Scroll cue — desktop only */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
       >
         <span className="eyebrow text-[10px]">Scroll</span>
         <motion.div

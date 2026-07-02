@@ -60,7 +60,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden flex items-center justify-center h-9 w-9 rounded-full hover:bg-[#e7e9e3] transition-colors"
+            className="lg:hidden flex items-center justify-center h-11 w-11 -mr-1 rounded-full hover:bg-[#e7e9e3] active:bg-[#e7e9e3] transition-colors touch-manipulation"
             onClick={() => setOpen((p) => !p)}
             aria-label="Toggle menu"
           >
@@ -77,14 +77,14 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 left-0 right-0 z-40 bg-[#fbf9f1] border-b-2 border-[#bddbd1] px-6 py-6 flex flex-col gap-4 lg:hidden"
+            className="fixed top-16 left-0 right-0 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto bg-[#fbf9f1] border-b-2 border-[#bddbd1] px-6 py-6 flex flex-col gap-1 lg:hidden"
           >
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-sm text-[#4a5e5b] hover:text-[#2f3e3c] transition-colors py-1"
+                className="flex items-center min-h-[44px] text-sm text-[#4a5e5b] hover:text-[#2f3e3c] active:text-[#2f3e3c] transition-colors touch-manipulation"
               >
                 {link.label}
               </a>
@@ -92,7 +92,7 @@ export default function Navbar() {
             <a
               href="#book"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex justify-center rounded-full bg-[#bddbd1] px-4 py-3 text-sm font-medium text-[#2f3e3c]"
+              className="mt-2 inline-flex items-center justify-center min-h-[44px] rounded-full bg-[#bddbd1] px-4 py-3 text-sm font-medium text-[#2f3e3c] touch-manipulation"
             >
               Book Consultation
             </a>

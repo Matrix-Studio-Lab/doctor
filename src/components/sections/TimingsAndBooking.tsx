@@ -52,7 +52,7 @@ export default function TimingsAndBooking() {
           <div className="mt-4 h-0.5 w-16 rounded-full bg-[#bddbd1]" />
         </div>
 
-        <div ref={ref} className="grid lg:grid-cols-5 gap-6">
+        <div ref={ref} className="grid lg:grid-cols-5 gap-4 lg:gap-6">
 
           {/* ── LEFT: Hours card (2 cols) ── */}
           <motion.div
@@ -62,7 +62,7 @@ export default function TimingsAndBooking() {
             className="lg:col-span-2 flex flex-col gap-0 rounded-3xl bg-[#2f3e3c] overflow-hidden font-sans"
           >
             {/* Card header */}
-            <div className="px-7 pt-7 pb-5 border-b border-[#3d5452]">
+            <div className="px-5 pt-5 pb-4 lg:px-7 lg:pt-7 lg:pb-5 border-b border-[#3d5452]">
               <div className="flex items-center gap-3 mb-1">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#bddbd1]">
                   <Clock className="h-4 w-4 text-[#2f3e3c]" />
@@ -72,11 +72,11 @@ export default function TimingsAndBooking() {
             </div>
 
             {/* Schedule rows */}
-            <div className="flex flex-col flex-1 px-7 py-4 gap-1">
+            <div className="flex flex-col flex-1 px-5 py-2 lg:px-7 lg:py-4 gap-0.5 lg:gap-1">
               {schedule.map((s) => (
                 <div
                   key={s.day}
-                  className={`flex items-center justify-between py-2.5 border-b border-[#3d5452]/60 last:border-0 ${!s.open ? "opacity-35" : ""}`}
+                  className={`flex items-center justify-between py-1.5 lg:py-2.5 border-b border-[#3d5452]/60 last:border-0 ${!s.open ? "opacity-35" : ""}`}
                 >
                   <span className={`text-sm font-medium ${s.open ? "text-[#e7e9e3]" : "text-[#4a5e5b]"}`}>
                     {s.day}
@@ -89,15 +89,15 @@ export default function TimingsAndBooking() {
             </div>
 
             {/* Address footer */}
-            <div className="px-7 py-6 bg-[#263330]">
-              <p className="eyebrow text-[#bddbd1] mb-2">Clinic Address</p>
-              <p className="text-lg text-[#fbf9f1] leading-snug">
+            <div className="px-5 py-4 lg:px-7 lg:py-6 bg-[#263330]">
+              <p className="eyebrow text-[#bddbd1] mb-1.5 lg:mb-2">Clinic Address</p>
+              <p className="text-base lg:text-lg text-[#fbf9f1] leading-snug">
                 Sector 3, Salt Lake<br />
                 <span className="font-light">Kolkata, West Bengal</span>
               </p>
               <a
                 href="tel:+919000000000"
-                className="mt-3 inline-flex items-center gap-2 text-sm text-[#bddbd1] hover:text-[#c7e7ec] transition-colors"
+                className="mt-2 lg:mt-3 inline-flex items-center gap-2 text-sm text-[#bddbd1] hover:text-[#c7e7ec] transition-colors"
               >
                 <Phone className="h-3.5 w-3.5" />
                 +91 90000 00000
@@ -110,7 +110,7 @@ export default function TimingsAndBooking() {
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.12, ease }}
-            className="lg:col-span-3 rounded-3xl bg-[#2f3e3c] p-7 lg:p-9 font-sans"
+            className="lg:col-span-3 rounded-3xl bg-[#2f3e3c] p-5 lg:p-9 font-sans"
           >
             {submitted ? (
               /* ── Success state ── */
@@ -139,19 +139,19 @@ export default function TimingsAndBooking() {
             ) : (
               <>
                 {/* Form header */}
-                <div className="flex items-center gap-3 mb-8">
+                <div className="flex items-center gap-3 mb-4 lg:mb-8">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#bddbd1]">
                     <CalendarCheck className="h-4 w-4 text-[#2f3e3c]" />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-[#fbf9f1]">Request an Appointment</h3>
+                    <span className="block font-sans text-sm font-semibold text-[#fbf9f1]">Request an Appointment</span>
                     <p className="text-xs text-[#bddbd1]">Fill in your details and preferred time</p>
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3 lg:gap-5">
                   {/* Name + Phone row */}
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3 lg:gap-4">
                     <Field label="Full Name" required>
                       <input
                         id="name" name="name" type="text" required
@@ -171,7 +171,7 @@ export default function TimingsAndBooking() {
                   </div>
 
                   {/* Date + Slot row */}
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3 lg:gap-4">
                     <Field label="Preferred Date" required>
                       <input
                         id="date" name="date" type="date" required
@@ -204,7 +204,7 @@ export default function TimingsAndBooking() {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="mt-1 w-full rounded-xl bg-[#bddbd1] py-3.5 text-sm font-medium text-[#2f3e3c] transition-all duration-300 hover:bg-[#a8cfc4] active:scale-[0.99]"
+                    className="mt-1 w-full min-h-[44px] rounded-xl bg-[#bddbd1] py-3.5 text-sm font-medium text-[#2f3e3c] transition-all duration-300 hover:bg-[#a8cfc4] active:scale-[0.99] touch-manipulation"
                   >
                     Request Appointment
                   </button>
@@ -224,7 +224,7 @@ export default function TimingsAndBooking() {
 
 /* ── Shared helpers ── */
 const inputCls =
-  "w-full rounded-xl border border-[#3d5452] bg-[#3d5452] px-4 py-2.5 text-sm text-[#fbf9f1] placeholder-[#bddbd1]/50 outline-none focus:border-[#bddbd1] transition-colors";
+  "w-full min-h-[40px] rounded-xl border border-[#3d5452] bg-[#3d5452] px-3.5 py-2 text-sm text-[#fbf9f1] placeholder-[#bddbd1]/50 outline-none focus:border-[#bddbd1] transition-colors";
 
 function Field({
   label,
@@ -237,7 +237,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-xs font-medium text-[#e7e9e3]">
+      <label className="text-sm font-medium text-[#e7e9e3]">
         {label}{required && <span className="ml-0.5 text-[#bddbd1]">*</span>}
       </label>
       {children}

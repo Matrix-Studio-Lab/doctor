@@ -52,7 +52,7 @@ export default function MapAndFooter() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#bddbd1] shrink-0">
                   <Phone className="h-4 w-4 text-[#2f3e3c]" />
                 </div>
-                <a href="tel:+919000000000" className="text-sm text-[#2f3e3c] hover:underline">
+                <a href="tel:+919000000000" className="flex items-center min-h-[44px] text-sm text-[#2f3e3c] hover:underline touch-manipulation">
                   +91 90000 00000
                 </a>
               </div>
@@ -63,7 +63,7 @@ export default function MapAndFooter() {
                 </div>
                 <a
                   href="mailto:appointments@drdeepakverma.in"
-                  className="text-sm text-[#2f3e3c] hover:underline break-all"
+                  className="flex items-center min-h-[44px] text-sm text-[#2f3e3c] hover:underline break-all touch-manipulation"
                 >
                   appointments@drdeepakverma.in
                 </a>

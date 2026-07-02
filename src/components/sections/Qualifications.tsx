@@ -53,21 +53,21 @@ function MilestoneCard({
 }) {
   const Icon = m.icon;
   return (
-    <div className="group rounded-2xl border border-[#bddbd1]/30 bg-[#fbf9f1] px-6 py-5 transition-all duration-300 hover:border-[#bddbd1] hover:shadow-[0_4px_28px_rgba(47,62,60,0.07)]">
-      <div className="flex items-start gap-4">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#bddbd1]/20 transition-colors duration-300 group-hover:bg-[#bddbd1]">
+    <div className="group rounded-2xl border border-[#bddbd1]/30 bg-[#fbf9f1] px-6 py-6 lg:px-6 lg:py-5 transition-all duration-300 hover:border-[#bddbd1] hover:shadow-[0_4px_28px_rgba(47,62,60,0.07)]">
+      <div className="flex flex-col items-center text-center gap-0 lg:flex-row lg:items-start lg:text-left lg:gap-4">
+        <div className="hidden lg:flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#bddbd1]/20 transition-colors duration-300 group-hover:bg-[#bddbd1]">
           <Icon className="h-4 w-4 text-[#2f3e3c]" />
         </div>
-        <div>
-          <span className="eyebrow text-[10px]">{m.label}</span>
-          <h3 className="font-display mt-0.5 text-xl font-semibold leading-snug text-[#2f3e3c]">
+        <div className="w-full">
+          <span className="eyebrow text-[11px] lg:text-[10px]">{m.label}</span>
+          <h3 className="font-display mt-1 lg:mt-0.5 text-xl font-semibold leading-snug text-[#2f3e3c]">
             {m.title}
           </h3>
-          <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-[#2f3e3c]">
+          <p className="mt-2 lg:mt-1 flex items-center justify-center lg:justify-start gap-1.5 text-xs font-medium text-[#2f3e3c]">
             <span className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[#bddbd1]" />
             {m.institution}
           </p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-[#4a5e5b]">
+          <p className="mt-3 lg:mt-2 lg:max-w-sm mx-auto lg:mx-0 text-sm leading-relaxed text-[#4a5e5b]">
             {m.detail}
           </p>
         </div>
